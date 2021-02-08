@@ -1,0 +1,63 @@
+待解决问题：
+
+   无。
+
+
+
+=========================
+
+已解决问题：
+
+* 自动检测各云目录: dropbox,google drive, skydrive. 用户亦可手工选择。
+  提供可修改路径 root directory.
+
+
+* 如果根目录定位到My Documents,会遇到UnauthorizedAccess exception.因为子目录
+  比如 My Music etc属于symbolic link。此时ignore these "subdirectories"。
+
+
+* 加入菜单选项 menu-tool-options供用户更改主密码.
+  界面中提供 Menu->Tools->Option->更改文档主密码 (password for documents)
+
+* 工具栏加入"Settings"图标
+
+* 文件右键可显示所有操作 by ContextMenuStrip：example "Lock, Unlock"
+
+* 点击columnheader可以对listview items进行排序。
+
+* 双击可打开文件
+
+* 双击文件目录，进入
+
+* 工具栏"Refresh"图标用以刷新当前目录，以避免其他程序有文件操作。
+
+* 左栏TreeView中当前目录应有特别显示。TreeView.HideSelection = false 除此外用另一个图标表示。
+
+* 右栏ListView只有details view，因为要显示文件类型和保护标志，small icon view无法用一个图标表示/或者
+  需要太多图标。
+
+* 不同文件类型用不同图标显示。
+
+* Zip/Zip with password 目前只支持压缩单个文件或文件夹：
+   单个文件时压缩文件名为filename.xxx.zip，压缩目录到根目录；
+   单个文件夹时压缩文件名为foldername.zip，压缩目录保存该文件夹名（即压缩到更深一级目录）
+   暂时不支持选中多个文件/文件夹进行压缩，因为需要用户输入压缩文件名。
+
+   解压缩时到当前目录。
+
+
+* Unlock File to （暂未）实现到指定路径文件，因为要统一接口
+  Unzip  File to 实现到指定目录
+
+
+* password generator作为一个单独的模块和菜单选项， 不与verify绑定。（暂未加入）
+
+
+* verify会比较多个密码，但是lock/unlock, zip/unzip始终用缺省密码。如果verify password失败， 提示用户手工输入一个password。如果成功，会将新密码保存。
+
+
+* PDF文件已加入水印添加和消除功能。另外添加一个去除用户权限菜单。
+
+* 对Office文件打开存在权限拒绝bug。 已解决，不是bug。原来是我设置文件为只读。现在改为可写，然后写入字节，最后恢复文件只读属性
+
+* CryptLib提示 "An symmetric key algorithm of AES could not be created." 是net4.0=>3.5不支持SymmetricAlgorithm.Create(string).已解决。
